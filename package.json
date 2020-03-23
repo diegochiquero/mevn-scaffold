@@ -1,0 +1,27 @@
+{
+  "name": "mevn-scaffold",
+  "version": "1.0.0",
+  "author": "Diego Chiquero Mena",
+  "description": "MEVN code scaffold for projects and Dockerfile included",
+  "license": "MIT",
+  "homepage": "https://github.com/diegochiquero/mevn-scaffold/#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "MongoDB",
+    "Express",
+    "Node",
+    "Vue",
+    "vuex",
+		"vue-router",
+		"vuetify",
+		"vue-sweetalert2",
+    "Docker"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/diegochiquero/mevn-scaffold.git"
+  },
+  "dependencies": {}
+}
