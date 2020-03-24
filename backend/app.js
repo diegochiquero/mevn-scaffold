@@ -14,7 +14,7 @@ const http = require('http')
 	  cors = require('cors')
 	  errorhandler = require('errorhandler')
 	  mongoose = require('mongoose')
-	  config = require('config')
+	  config = require('./config')
 
 const isProduction = process.env.NODE_ENV === 'production' //boolean true or false
 
@@ -47,13 +47,13 @@ if (!isProduction) {
 //Database connection
 if (isProduction) {
 	//console.log(`Remote database: ${process.env.MONGODB_URL}`)
-	mongoose.connect(process.env.MONGODB_URL, {	useNewUrlParser: true })
+	mongoose.connect(process.env.MONGODB_URL, {	useNewUrlParser: true, useUnifiedTopology: true})
 	// Static folder
 	app.use(express.static(__dirname + '/public/'))
 	// Handle SPA
 	app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'))
 } else {
-	mongoose.connect(config.db, { useNewUrlParser: true })
+	mongoose.connect(config.db, { useNewUrlParser: true, useUnifiedTopology: true, })
 	mongoose.set('debug', true)
 	//console.log(`Local database:  ${config.db}`)
 }

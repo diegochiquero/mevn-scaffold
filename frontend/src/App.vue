@@ -1,8 +1,8 @@
 <template>
-	<!-- Background color-->
-	<v-app class="grey lighten-2">
+	<v-app>
 		<TheHeader />
-		<v-content class="mx-4 mb-4">
+		<!-- Background color-->
+		<v-content class="grey lighten-5">
 			<router-view></router-view>
 		</v-content>
 		<TheFooter />
