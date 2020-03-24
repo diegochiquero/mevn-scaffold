@@ -14,9 +14,9 @@
     "Node",
     "Vue",
     "vuex",
-		"vue-router",
-		"vuetify",
-		"vue-sweetalert2",
+    "vue-router",
+    "vuetify",
+    "vue-sweetalert2",
     "Docker"
   ],
   "repository": {
