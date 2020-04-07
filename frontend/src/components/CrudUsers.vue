@@ -1,58 +1,49 @@
 <template>
 	<div class="users">
 		<v-container class="my-5">
-			<v-card flat v-if="allUsers.length !== 0">
-				<template v-for="(user, index) in allUsers">
-					<v-layout
-						v-bind:key="user._id"
-						wrap
-						class="pa-3 blueBorder"
-						align-center
-					>
-						<v-flex xs6 md5 class="ps-6">
-							<div class=" blue-grey--text body-1">
-								{{ user.username }}
-							</div>
-						</v-flex>
-						<v-flex xs6 md5 class="ps-6">
-							<div class="blue-grey--text body-1">
-								{{ user.email }}
-							</div>
-						</v-flex>
-						<v-flex xs6 sm6 md1 class="ps-12">
-							<div class="grey--text">
-								<v-btn
-									@click="clickToUpDateUser(user)"
-									text
-									icon
-									color="blue lighten-2"
-								>
-									<v-icon>mdi-pencil</v-icon>
-								</v-btn>
-							</div>
-						</v-flex>
-						<v-flex xs6 sm6 md1 class="ps-12">
-							<v-btn
-								@click="clickToDeleteUser(user)"
-								text
-								icon
-								color="error"
-							>
-								<v-icon>mdi-delete</v-icon>
-							</v-btn>
-						</v-flex>
-					</v-layout>
-					<v-divider
-						v-if="index + 1 < allUsers.length"
-						:key="index"
-					></v-divider>
-				</template>
-			</v-card>
-			<v-card flat v-else height="60px" class="mx-auto">
-				<v-card-text class="text-center error--text font-weight-regular">
-					There are no users. Please enter at least one above.
-				</v-card-text></v-card
+			<v-data-table
+				:headers="headers"
+				:items="allUsers"
+				:page.sync="page"
+				:items-per-page="itemsPerPage"
+				hide-default-footer
+				class="elevation-2 font-weight-regular"
+				@page-count="pageCount = $event"
 			>
+				<template
+					v-if="allUsers.length !== 0"
+					v-slot:item.actions="{ item }"
+				>
+					<v-btn
+						@click="clickToUpDateUser(item)"
+						text
+						icon
+						color="blue lighten-2"
+					>
+						<v-icon>mdi-pencil</v-icon>
+					</v-btn>
+					<v-btn @click="clickToDeleteUser(item)" text icon color="error">
+						<v-icon>mdi-delete</v-icon>
+					</v-btn>
+				</template>
+				<template v-else v-slot:no-data>
+					<v-alert type="error">
+						Sorry, nothing to display here :( Please, enter at least one
+						user.
+					</v-alert>
+				</template></v-data-table
+			>
+			<div class="text-center pt-2">
+				<v-pagination v-model="page" :length="pageCount"></v-pagination>
+				<v-text-field
+					:value="itemsPerPage"
+					label="Items per page"
+					type="number"
+					min="-1"
+					max="15"
+					@input="itemsPerPage = parseInt($event, 10)"
+				></v-text-field>
+			</div>
 		</v-container>
 	</div>
 </template>
@@ -61,6 +52,23 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
 	name: 'CrudUsers',
+	data() {
+		return {
+			page: 1,
+			pageCount: 0,
+			itemsPerPage: 3,
+			headers: [
+				{
+					align: 'start',
+					value: 'name'
+				},
+				{ text: 'Name', value: 'username', width: '40%' },
+				{ text: 'Email', value: 'email', width: '40%' },
+				{ text: 'Actions', value: 'actions', width: '20%', align: 'right' }
+			]
+		}
+	},
+
 	methods: {
 		...mapActions(['getAllUsers', 'deleteUser', 'updateUser']),
 		clickToDeleteUser(user) {
