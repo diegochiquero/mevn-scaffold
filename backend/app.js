@@ -3,7 +3,7 @@
  * 2020 Diego Chiquero Mena <chiquerodiego@gmail.com>
  * MIT Licensed
  */
-//TODO: set Helmet
+
 require('dotenv').config()
 
 const http = require('http')
@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({
 	extended: false
 }))
 app.use(bodyParser.json())
-app.user(helmet())
+app.use(helmet())
 app.use(require('method-override')())
 
 //Models
