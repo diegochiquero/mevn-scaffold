@@ -12,7 +12,7 @@ node_modules/
 .env
 
 # It will be created every time when "npm run build"
-# public/
+public/
 
 # Docker volumes
 data/
