@@ -3,7 +3,7 @@
  * 2020 Diego Chiquero Mena <chiquerodiego@gmail.com>
  * MIT Licensed
  */
-
+//TODO: set Helmet
 require('dotenv').config()
 
 const http = require('http')
@@ -15,6 +15,7 @@ const http = require('http')
 	  errorhandler = require('errorhandler')
 	  mongoose = require('mongoose')
 	  config = require('./config')
+	  helmet = require('helmet')
 
 const isProduction = process.env.NODE_ENV === 'production' //boolean true or false
 
@@ -29,7 +30,7 @@ app.use(bodyParser.urlencoded({
 	extended: false
 }))
 app.use(bodyParser.json())
-
+app.user(helmet())
 app.use(require('method-override')())
 
 //Models
@@ -47,7 +48,7 @@ if (!isProduction) {
 //Database connection
 if (isProduction) {
 	//console.log(`Remote database: ${process.env.MONGODB_URL}`)
-	mongoose.connect(process.env.MONGODB_URL, {	useNewUrlParser: true, useUnifiedTopology: true})
+	mongoose.connect(config.db, {	useNewUrlParser: true, useUnifiedTopology: true})
 	// Static folder
 	app.use(express.static(__dirname + '/public/'))
 	// Handle SPA
