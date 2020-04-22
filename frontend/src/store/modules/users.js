@@ -1,5 +1,5 @@
 import ApiService from '@/services/api.service'
-//TODO: UPPERCASE
+
 //initial state
 const state = {
 	users: []
