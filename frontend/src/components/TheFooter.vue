@@ -56,8 +56,8 @@
 					>by</span
 				>
 				<span class="ml-2"
-					><a href="https://twitter.com/chiquerodiego" target="_blank"
-						>@chiquerodiego</a
+					><a href="https://about.me/diegochiquero" target="_blank"
+						>Diego Chiquero</a
 					></span
 				>
 			</v-col>
