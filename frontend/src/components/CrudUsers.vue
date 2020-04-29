@@ -7,7 +7,7 @@
 				:page.sync="page"
 				:items-per-page="itemsPerPage"
 				hide-default-footer
-				class="elevation-2 font-weight-regular"
+				class="elevation-1 font-weight-regular"
 				@page-count="pageCount = $event"
 			>
 				<template
@@ -59,12 +59,19 @@ export default {
 			itemsPerPage: 3,
 			headers: [
 				{
+					text: 'Name',
 					align: 'start',
-					value: 'name'
+					value: 'username',
+					width: '40%'
 				},
-				{ text: 'Name', value: 'username', width: '40%' },
 				{ text: 'Email', value: 'email', width: '40%' },
-				{ text: 'Actions', value: 'actions', width: '20%', align: 'right' }
+				{
+					text: 'Actions',
+					value: 'actions',
+					width: '20%',
+					align: 'right',
+					sortable: false
+				}
 			]
 		}
 	},
