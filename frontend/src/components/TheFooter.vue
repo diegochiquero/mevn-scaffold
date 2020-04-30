@@ -34,32 +34,37 @@
 			<v-col
 				class="blue-grey lighten-4 py-4 text-center grey--text text--darken-2"
 				cols="12"
-			>
-				{{ new Date().getFullYear() }} —
-				<span
-					class="blue-grey lighten-4 text-uppercase grey--text text--darken-2"
-					>Mevn</span
-				>
-				<span
-					class="blue-grey lighten-4 font-weight-light grey--text text--darken-2"
-					>Scaffold</span
-				>
-				<span
-					class="blue-grey lighten-4 ml-12 font-weight-light grey--text text--darken-2"
-				>
-					Made with </span
-				><v-icon class="pb-1 ml-1" small color="pink"
-					>mdi-cards-heart</v-icon
-				>
-				<span
-					class="blue-grey lighten-4 ml-2 font-weight-light grey--text text--darken-2"
-					>by</span
-				>
-				<span class="ml-2"
-					><a href="https://about.me/diegochiquero" target="_blank"
-						>Diego Chiquero</a
-					></span
-				>
+				><v-layout wrap
+					><v-flex xs12 sm6>
+						{{ new Date().getFullYear() }} —
+						<span
+							class="blue-grey lighten-4 text-uppercase grey--text text--darken-2"
+							>Mevn</span
+						>
+						<span
+							class="blue-grey lighten-4 font-weight-light grey--text text--darken-2"
+							>Scaffold</span
+						></v-flex
+					>
+					<v-flex xs12 sm6>
+						<span
+							class="blue-grey lighten-4 font-weight-light grey--text text--darken-2"
+						>
+							Made with </span
+						><v-icon class="pb-1 ml-1" small color="pink"
+							>mdi-cards-heart</v-icon
+						>
+						<span
+							class="blue-grey lighten-4 ml-2 font-weight-light grey--text text--darken-2"
+							>by</span
+						>
+						<span class="ml-2"
+							><a href="https://about.me/diegochiquero" target="_blank"
+								>Diego Chiquero</a
+							></span
+						>
+					</v-flex>
+				</v-layout>
 			</v-col>
 		</v-row>
 	</v-footer>
