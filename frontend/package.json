@@ -1,22 +1,14 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "author": "Diego Chiquero Mena",
   "description": "mevn-scaffold front-end",
-  "license": "MIT",
-  "homepage": "https://github.com/diegochiquero/mevn-scaffold/frontend/#readme",
+  "author": "Diego Chiquero Mena",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit"
   },
-  "keywords": [
-    "vue",
-    "vuex",
-    "vue-router",
-    "vuetify",
-    "vue-sweetalert2"
-  ],
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^2.6.11",
@@ -31,8 +23,10 @@
     "@vue/cli-plugin-babel": "^3.12.1",
     "@vue/cli-plugin-eslint": "^3.12.1",
     "@vue/cli-plugin-pwa": "^3.12.1",
+    "@vue/cli-plugin-unit-jest": "^4.3.1",
     "@vue/cli-service": "^3.12.1",
     "@vue/eslint-config-prettier": "^5.1.0",
+    "@vue/test-utils": "1.0.0-beta.31",
     "babel-eslint": "^10.1.0",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.2",
@@ -56,7 +50,18 @@
     "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
-    }
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
   },
   "postcss": {
     "plugins": {
@@ -66,5 +71,14 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "homepage": "https://github.com/diegochiquero/mevn-scaffold/frontend/#readme",
+  "keywords": [
+    "vue",
+    "vuex",
+    "vue-router",
+    "vuetify",
+    "vue-sweetalert2"
+  ],
+  "license": "MIT"
 }
