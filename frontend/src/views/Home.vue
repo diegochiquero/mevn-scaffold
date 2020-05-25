@@ -1,5 +1,6 @@
 <template>
 	<div class="home">
+		<h1>{{ msg }}</h1>
 		<v-container class="my-5">
 			<v-row class="mt-1">
 				<v-col
@@ -36,6 +37,7 @@
 
 export default {
 	name: 'Home',
+	props: { msg: String },
 	data: () => ({
 		logos: [
 			{ src: '/mongodb-logo.png', alt: 'mongo logo' },

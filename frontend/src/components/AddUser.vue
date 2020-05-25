@@ -8,6 +8,8 @@
 				<v-row>
 					<v-col cols="12" md="5">
 						<v-text-field
+							type="input"
+							data-testid="username-input"
 							v-model="username"
 							:counter="20"
 							label="First name"
@@ -17,6 +19,8 @@
 					</v-col>
 					<v-col cols="12" md="5">
 						<v-text-field
+							type="input"
+							data-testid="email-input"
 							v-model="email"
 							label="E-mail"
 							:rules="emailRules"
@@ -26,6 +30,7 @@
 					<v-col cols="12" md="2">
 						<v-spacer></v-spacer>
 						<v-btn
+							type="submit"
 							:disabled="!isValid"
 							depressed
 							color="primary"
