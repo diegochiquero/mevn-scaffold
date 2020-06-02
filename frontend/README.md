@@ -16,3 +16,10 @@ $ npm run serve
 # Compiles and minifies for production
 $ npm run build
 ```
+
+### Unit testing
+
+```
+# Run unit tests
+$ npm run test:unit
+```
