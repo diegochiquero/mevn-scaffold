@@ -1,3 +1,9 @@
+/*
+ * mevn-scaffold
+ * 2020 Diego Chiquero Mena <chiquerodiego@gmail.com>
+ * MIT Licensed
+ */
+
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
