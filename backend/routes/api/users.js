@@ -1,15 +1,12 @@
 const mongoose = require('mongoose')
-		router = require('express').Router()
-		User = mongoose.model('User')
+      router = require('express').Router()
+      User = mongoose.model('User')
 
 // Read
 router.get('/user', (req, res, next) => {
 	User.find().then((user) => {
-		if (!user) {
-			return res.sendStatus(401)
-		}
-
-		return res.status(200).json({
+		if (!user) res.sendStatus(401)
+		res.status(200).json({
 			user
 		}) //1
 	}).catch(next)
@@ -18,19 +15,12 @@ router.get('/user', (req, res, next) => {
 //Update
 router.put('/user/:userId', (req, res, next) => {
 	User.findById(req.params.userId).then((user) => {
-		if (!user) {
-			return res.sendStatus(401)
-		}
-
-		if (typeof req.body.user.username !== 'undefined') {
-			user.username = req.body.user.username
-		}
-		if (typeof req.body.user.email !== 'undefined') {
-			user.email = req.body.user.email
-		}
+		if (!user) res.sendStatus(401)
+		if (typeof req.body.user.username !== 'undefined') user.username = req.body.user.username
+		if (typeof req.body.user.email !== 'undefined') user.email = req.body.user.email
 
 		user.save().then(() => {
-			return res.status(200).json({
+			res.status(200).json({
 				user
 			})
 		})
@@ -51,7 +41,7 @@ router.post('/users', (req, res, next) => {
 	user.email = req.body.user.email
 
 	user.save().then(() => {
-		return res.status(201).json({
+		res.status(201).json({
 			user
 		})
 	}).catch(next)
@@ -60,12 +50,10 @@ router.post('/users', (req, res, next) => {
 //Delete
 router.delete('/user/:userId', (req, res, next) => {
 	User.findById(req.params.userId).then((user) => {
-		if (!user) {
-			return res.sendStatus(401)
-		}
-
+		if (!user) res.sendStatus(401)
+		
 		user.remove().then(() => {
-			return res.status(200).json({
+			res.status(200).json({
 				user
 			})
 		})
@@ -76,3 +64,5 @@ module.exports = router
 
 /*1.- json({user: user} In this case first user is a variable and second are datas. Leave one of both
 because in ECMAScript 6 if both got same name, we can use only one*/
+
+/*Arrow function no need return*/
