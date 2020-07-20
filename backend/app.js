@@ -39,8 +39,6 @@ require('./models/User')
 //Routes
 app.use(require('./routes'))
 
-//TODO:
-
 if (!isProduction) {
 	app.use(errorhandler());
   }
