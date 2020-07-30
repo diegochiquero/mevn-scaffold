@@ -58,5 +58,3 @@ describe('mongodb memory server database', () => {
         })
     })
 })
-
-// const newUser = await User.create({ username: 'John', email: 'john@gmail.com'})

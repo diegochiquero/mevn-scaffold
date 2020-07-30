@@ -8,16 +8,17 @@ require('dotenv').config()
 
 const http = require('http')
 	  path = require('path')
-	  methods = require('methods')
-	  express = require('express')
-	  bodyParser = require('body-parser')
-	  cors = require('cors')
-	  errorhandler = require('errorhandler')
-	  mongoose = require('mongoose')
-	  config = require('./config')
-	  helmet = require('helmet')
+      methods = require('methods')
+      express = require('express')
+      bodyParser = require('body-parser')
+      cors = require('cors')
+      errorhandler = require('errorhandler')
+      mongoose = require('mongoose')
+      config = require('./config')
+      helmet = require('helmet')
 
-const isProduction = process.env.NODE_ENV === 'production' //boolean true or false
+const env = process.env.NODE_ENV
+console.log(`env is ${env}`)
 
 //Create global app object
 const app = express()
@@ -39,23 +40,28 @@ require('./models/User')
 //Routes
 app.use(require('./routes'))
 
-if (!isProduction) {
-	app.use(errorhandler());
-  }
+if (env !== 'production') app.use(errorhandler())
 
 //Database connection
-if (isProduction) {
+if (env === 'production') {
 	//console.log(`Remote database: ${process.env.MONGODB_URL}`)
-	mongoose.connect(config.db, {	useNewUrlParser: true, useUnifiedTopology: true})
+	mongoose.connect(config.db, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	})
 	// Static folder
 	app.use(express.static(__dirname + '/public/'))
 	// Handle SPA
 	app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'))
-} else {
-	mongoose.connect(config.db, { useNewUrlParser: true, useUnifiedTopology: true, })
+} else if (env === 'development') {
+	mongoose.connect(config.db, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	})
 	mongoose.set('debug', true)
 	//console.log(`Local database:  ${config.db}`)
-}
+} else console.log('Now testing is running')
+
 mongoose.set('useCreateIndex', true) //To avoid a deprecation warning
 
 // catch 404 and forward to error handler
@@ -67,7 +73,7 @@ app.use((req, res, next) => {
 
 // development error handler
 // will print stacktrace
-if (!isProduction) {
+if (env !== 'production') {
 	app.use((err, req, res, next) => {
 		//console.log(err.stack)
 
@@ -97,3 +103,5 @@ app.use((err, req, res, next) => {
 
 //Finally let's start our server...
 const server = app.listen(process.env.PORT || 3000, () => console.log(`Listening on port ${server.address().port}`))
+
+module.exports = app
