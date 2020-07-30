@@ -15,6 +15,12 @@ $ npm run start:dev
 # Production mode
 $ npm run start:prod
 ```
+### Unit testing
+
+```
+# Run unit tests
+$ npm test
+```
 
 ### Use MongoDB Docker image as a database
 
