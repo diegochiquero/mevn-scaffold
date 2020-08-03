@@ -36,7 +36,7 @@
   "chai": "^4.2.0",
   "mocha": "^8.0.1",
   "mongodb-memory-server": "^6.6.1",
-  "nodemon": "^1.19.4",
+  "nodemon": "^2.0.4",
   "supertest": "^4.0.2"
  }
 }
