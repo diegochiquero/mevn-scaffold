@@ -37,7 +37,3 @@ Then('User is created', function(next) {
 		.perform()
 		.then(next)
 })
-
-//TODO: npm warning - save favorites
-//! push
-//? merge branch
