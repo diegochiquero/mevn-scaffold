@@ -21,6 +21,12 @@ $ npm run start:prod
 # Run unit tests
 $ npm test
 ```
+### BDD testing environment
+
+```
+# Testing mode (Run only to cucumber and selenium frontend testing in the browser)
+$ npm run start:bdd
+```
 
 ### Use MongoDB Docker image as a database
 

@@ -23,3 +23,10 @@ $ npm run build
 # Run unit tests
 $ npm run test:unit
 ```
+
+### BDD testing
+
+```
+# Before it is necessary to run the BDD testing environment in backend
+$ npm test
+```

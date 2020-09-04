@@ -10,6 +10,7 @@
   "start": "node app.js",
   "start:prod": "env NODE_ENV=production node app.js",
   "start:dev": "env NODE_ENV=development nodemon backend/app.js",
+  "start:bdd": "env NODE_ENV=test nodemon backend/app.js",
   "test": "env NODE_ENV=test mocha --recursive --timeout 60000 --exit"
  },
  "keywords": [

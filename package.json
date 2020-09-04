@@ -17,7 +17,11 @@
     "vue-router",
     "vuetify",
     "vue-sweetalert2",
-    "Docker"
+    "Docker",
+    "mocha",
+    "jest",
+    "cucumber",
+    "selenium"
   ],
   "repository": {
     "type": "git",
