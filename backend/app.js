@@ -6,16 +6,13 @@
 
 require('dotenv').config()
 
-const http = require('http')
-	  path = require('path')
-      methods = require('methods')
-      express = require('express')
-      bodyParser = require('body-parser')
-      cors = require('cors')
-      errorhandler = require('errorhandler')
-      mongoose = require('mongoose')
-      config = require('./config')
-      helmet = require('helmet')
+const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const errorhandler = require('errorhandler')
+const mongoose = require('mongoose')
+const config = require('./config')
+const helmet = require('helmet')
 
 const env = process.env.NODE_ENV
 console.log(`env is ${env}`)
@@ -42,25 +39,20 @@ app.use(require('./routes'))
 
 if (env !== 'production') app.use(errorhandler())
 
-//Database connection
 if (env === 'production') {
-	//console.log(`Remote database: ${process.env.MONGODB_URL}`)
-	mongoose.connect(config.db, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true
-	})
 	// Static folder
-	app.use(express.static(__dirname + '/public/'))
+	app.use(express.static(__dirname + '/public/')) 
 	// Handle SPA
-	app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'))
-} else if (env === 'development') {
-	mongoose.connect(config.db, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-	})
-	mongoose.set('debug', true)
-	//console.log(`Local database:  ${config.db}`)
-} else console.log('Now testing is running')
+	app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html')) 
+} else mongoose.set('debug', true)
+
+//Database connection
+mongoose.connect(config.db, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+})
+
+console.log(`database: ${config.db}`)
 
 mongoose.set('useCreateIndex', true) //To avoid a deprecation warning
 
