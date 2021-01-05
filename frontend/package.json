@@ -11,7 +11,7 @@
     "test": "env NODE_ENV=test cucumber-js"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "^2.6.11",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.12",
