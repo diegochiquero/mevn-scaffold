@@ -34,7 +34,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-vue": "^5.0.0",
-    "mongoose": "^5.10.3",
+    "mongoose": "^5.12.6",
     "prettier": "^1.19.1",
     "sass": "^1.26.10",
     "sass-loader": "^7.1.0",
