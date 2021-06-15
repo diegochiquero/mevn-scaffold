@@ -77,7 +77,7 @@
     "> 1%",
     "last 2 versions"
   ],
-  "homepage": "https://github.com/diegochiquero/mevn-scaffold/frontend/#readme",
+  "homepage": "https://github.com/diegochiquero/mevn-scaffold/blob/master/frontend/README.md",
   "keywords": [
     "vue",
     "vuex",

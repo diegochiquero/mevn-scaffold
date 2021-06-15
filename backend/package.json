@@ -4,7 +4,7 @@
  "author": "Diego Chiquero Mena",
  "description": "mevn-scaffold back-end",
  "license": "MIT",
- "homepage": "https://github.com/diegochiquero/mevn-scaffold/backend/#readme",
+ "homepage": "https://github.com/diegochiquero/mevn-scaffold/blob/master/backend/README.md",
  "main": "app.js",
  "scripts": {
   "start": "node app.js",
